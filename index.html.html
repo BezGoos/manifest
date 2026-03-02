@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Манифест: Каждый со своей ебонцой</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(180deg, #faf8f3 0%, #f0ebe0 100%);
+            color: #2d2a26;
+            font-family: 'Georgia', serif;
+            line-height: 1.8;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            color: #2d5a3d;
+            text-align: center;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #6b6b5c;
+            font-style: italic;
+            margin-bottom: 50px;
+            font-size: 1.1em;
+        }
+
+        .section {
+            margin-bottom: 40px;
+            border-left: 4px solid #7a9b76;
+            padding-left: 20px;
+        }
+
+        .section.solution {
+            border-left-color: #c9a227;
+            background: linear-gradient(90deg, rgba(201, 162, 39, 0.08) 0%, transparent 100%);
+            padding: 24px 20px 24px 24px;
+            border-radius: 0 12px 12px 0;
+        }
+
+        h2 {
+            font-size: 1.4em;
+            color: #5a7c4e;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        .section.solution h2 {
+            color: #a67c00;
+        }
+
+        p {
+            margin-bottom: 15px;
+            color: #3d3a36;
+        }
+
+        .illustration {
+            background: #f5f2eb;
+            border: 1px solid #e0dcd2;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            font-style: italic;
+            color: #5a564c;
+            position: relative;
+        }
+
+        .illustration::before {
+            content: '◆';
+            color: #7a9b76;
+            margin-right: 10px;
+            font-style: normal;
+            font-size: 0.85em;
+        }
+
+        .highlight {
+            color: #2d5a3d;
+            font-weight: bold;
+        }
+
+        .quote {
+            font-size: 1.25em;
+            text-align: center;
+            color: #5a7c4e;
+            margin: 30px 0;
+            padding: 24px;
+            border-top: 2px solid #d4e0d0;
+            border-bottom: 2px solid #d4e0d0;
+            font-style: italic;
+            background: rgba(122, 155, 118, 0.06);
+            border-radius: 8px;
+        }
+
+        .paradox {
+            background: #fdf8ed;
+            border: 1px solid #e8d9a8;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .paradox h3 {
+            color: #a67c00;
+            margin-bottom: 10px;
+        }
+
+        .steps {
+            margin: 24px 0;
+        }
+
+        .step {
+            background: #f8f6f0;
+            border-left: 4px solid #c9a227;
+            padding: 14px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+            color: #3d3a36;
+        }
+
+        .step:last-child {
+            margin-bottom: 0;
+        }
+
+        .step strong {
+            color: #2d5a3d;
+        }
+
+        .final {
+            text-align: center;
+            margin-top: 50px;
+            padding: 36px 30px;
+            background: linear-gradient(135deg, #e8f0e6 0%, #f5f8f3 100%);
+            border-radius: 12px;
+            border: 1px solid #c5d4c0;
+        }
+
+        .final h2 {
+            font-size: 1.8em;
+            color: #2d5a3d;
+            margin-bottom: 20px;
+        }
+
+        .final p {
+            font-size: 1.1em;
+            color: #3d3a36;
+        }
+
+        .chain {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .chain-item {
+            background: #f5f2eb;
+            padding: 12px 20px;
+            border-radius: 8px;
+            color: #5a564c;
+            position: relative;
+            border: 1px solid #e8e4dc;
+        }
+
+        .chain-item::after {
+            content: '↓';
+            display: block;
+            text-align: center;
+            color: #7a9b76;
+            font-size: 1.2em;
+        }
+
+        .chain-item:last-child::after {
+            content: '';
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #d4d0c8;
+            margin: 40px 0;
+        }
+
+        /* Вирусный лейбл: зелёное солнышко */
+        .viral-label {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 32px;
+            flex-wrap: wrap;
+        }
+
+        .sun-wrap {
+            position: relative;
+            animation: sun-float 3s ease-in-out infinite;
+        }
+
+        @keyframes sun-float {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-6px) scale(1.02); }
+        }
+
+        .sun-wrap svg {
+            display: block;
+            filter: drop-shadow(0 4px 12px rgba(45, 90, 61, 0.25));
+            transition: transform 0.3s ease;
+        }
+
+        .sun-wrap:hover svg {
+            transform: rotate(5deg) scale(1.05);
+        }
+
+        .viral-tag {
+            font-family: Georgia, serif;
+            font-size: 1.1em;
+            font-weight: 600;
+            color: #2d5a3d;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            padding: 8px 16px;
+            background: linear-gradient(135deg, rgba(122, 155, 118, 0.2) 0%, rgba(200, 220, 190, 0.3) 100%);
+            border-radius: 999px;
+            border: 2px solid #7a9b76;
+        }
+
+        .viral-label-footer {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 40px;
+            padding: 20px;
+        }
+
+        .viral-label-footer .sun-wrap svg {
+            width: 64px;
+            height: 64px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <!-- Вирусный лейбл: зелёное солнышко -->
+    <div class="viral-label">
+        <div class="sun-wrap" title="Зелёное солнце — твой символ">
+            <svg width="80" height="80" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <!-- Лучи (сзади) -->
+                <g fill="#7a9b76" stroke="#5a7c4e" stroke-width="1.5">
+                    <path d="M40 8 L43 28 L40 26 L37 28 Z"/>
+                    <path d="M40 72 L43 52 L40 54 L37 52 Z"/>
+                    <path d="M8 40 L28 43 L26 40 L28 37 Z"/>
+                    <path d="M72 40 L52 43 L54 40 L52 37 Z"/>
+                    <path d="M18 18 L30 32 L28 30 L26 28 Z"/>
+                    <path d="M62 18 L50 32 L52 30 L54 28 Z"/>
+                    <path d="M18 62 L30 48 L28 50 L26 52 Z"/>
+                    <path d="M62 62 L50 48 L52 50 L54 52 Z"/>
+                </g>
+                <!-- Круг солнца -->
+                <circle cx="40" cy="40" r="22" fill="#8fbc8f" stroke="#5a7c4e" stroke-width="2"/>
+                <circle cx="40" cy="40" r="18" fill="url(#sunGrad)" opacity="0.9"/>
+                <defs>
+                    <radialGradient id="sunGrad" cx="35%" cy="35%" r="70%">
+                        <stop offset="0%" stop-color="#a8d4a0"/>
+                        <stop offset="100%" stop-color="#6b9b5c"/>
+                    </radialGradient>
+                </defs>
+                <!-- Личико -->
+                <circle cx="34" cy="36" r="3" fill="#2d2a26"/>
+                <circle cx="46" cy="36" r="3" fill="#2d2a26"/>
+                <path d="M32 46 Q40 52 48 46" stroke="#2d2a26" stroke-width="2" fill="none" stroke-linecap="round"/>
+                <circle cx="35" cy="35" r="0.8" fill="#fff"/>
+                <circle cx="47" cy="35" r="0.8" fill="#fff"/>
+            </svg>
+        </div>
+        <span class="viral-tag">#ЗелёноеСолнце</span>
+    </div>
+
+    <h1>Каждый со своей ебонцой</h1>
+    <p class="subtitle">Манифест о природе человека, конформности и пути к себе</p>
+
+    <!-- ТЕЗИС 1 -->
+    <div class="section">
+        <h2>I. Каждый рождается собой</h2>
+        <p>
+            Человек приходит в мир <span class="highlight">абсолютно аутентичным</span> —
+            без масок, без фильтров, без чужих ожиданий.
+            У каждого своя «ебонца» — не странность, не дефект.
+            Это и есть его природа.
+        </p>
+
+        <div class="illustration">
+            Ребёнок рисует солнце зелёным — и это правильно.
+            Пока не приходит взрослый и не говорит: «Солнце жёлтое».
+            С этого момента начинается конформность.
+        </div>
+
+        <p>
+            Гармония не достигается — она <span class="highlight">уже есть</span> с рождения.
+            Вся взрослая жизнь — это возможность вернуться к себе
+            сквозь слои чужих требований.
+        </p>
+    </div>
+
+    <hr>
+
+    <!-- ТЕЗИС 2 -->
+    <div class="section">
+        <h2>II. Общество конформно по природе</h2>
+        <p>
+            Общество держится на общих правилах — это необходимо.
+            Но оно часто идёт дальше: требует
+            <span class="highlight">приглушить индивидуальность</span>
+            ради удобства системы.
+        </p>
+
+        <div class="paradox">
+            <h3>Осознание:</h3>
+            <p>Общество создано людьми → Люди рождаются аутентичными →
+                Но общество часто просит отказаться от этой аутентичности →
+                Люди чувствуют неудовлетворённость →
+                И могут осознанно выбрать другой путь для себя и своих детей.</p>
+        </div>
+
+        <div class="illustration">
+            Человек всю жизнь мечтал писать музыку.
+            Родители сказали — иди на юриста, это стабильно.
+            В 45 лет он успешный юрист. Но его ебонца никуда не делась —
+            её можно вернуть в любом возрасте.
+        </div>
+    </div>
+
+    <hr>
+
+    <!-- ТЕЗИС 3 -->
+    <div class="section">
+        <h2>III. Финансовая цепь и выбор</h2>
+        <p>
+            Человек <span class="highlight">способен</span> влиять на обстоятельства.
+            Система часто устроена так, что выживание сегодня
+            кажется важнее развития завтра — но это не приговор.
+        </p>
+
+        <div class="chain">
+            <div class="chain-item">Базовые потребности не закрыты</div>
+            <div class="chain-item">Мало времени думать о высшем</div>
+            <div class="chain-item">Конформность как стратегия выживания</div>
+            <div class="chain-item">Своя ебонца отложена — но не потеряна</div>
+            <div class="chain-item">Неудовлетворённость как компас обратно к себе</div>
+        </div>
+
+        <div class="illustration">
+            Разработчик видит, как ИИ может изменить мир.
+            У него ипотека, двое детей и кредит. Он пишет корпоративный код.
+            Но он также может по шагам освобождать время и пространство
+            для того, что по-настоящему его двигает.
+        </div>
+    </div>
+
+    <hr>
+
+    <!-- ТЕЗИС 4 -->
+    <div class="section">
+        <h2>IV. ИИ — инструмент освобождения</h2>
+        <p>
+            Искусственный интеллект и инновации
+            <span class="highlight">нужны обществу</span> —
+            это понимают многие. Их можно принимать не как угрозу,
+            а как способ вернуть себе время и смысл.
+        </p>
+
+        <p>
+            ИИ способен убрать рутину — дать человеку ресурс
+            вернуться к своей ебонце. Финансовая зависимость усложняет путь,
+            но не отменяет возможность двигаться к себе.
+        </p>
+
+        <div class="illustration">
+            Художник беспокоится, что ИИ заменит его.
+            Но ИИ не имеет его боли, его истории, его ебонцы.
+            Он может использовать технологии, чтобы освободить руки
+            для того, что только он умеет — живой, личный, человеческий жест.
+        </div>
+    </div>
+
+    <hr>
+
+    <!-- РЕШЕНИЕ -->
+    <div class="section solution">
+        <h2>V. Решение: путь обратно к себе</h2>
+        <p>
+            Проблема не в том, что «всё сломано», а в том, что мы перестаём
+            считать свою природу приоритетом. <span class="highlight">Решение существует</span> —
+            и оно не в бегстве от системы, а в осознанном выборе внутри неё.
+        </p>
+
+        <div class="steps">
+            <div class="step"><strong>Признать свою ебонцу.</strong> Не странность, а дар. То, что делает тебя тобой.</div>
+            <div class="step"><strong>Снижать долг перед «нормой».</strong> Маленькие шаги к своему — хобби, границы, отказ от лишних обязательств.</div>
+            <div class="step"><strong>Использовать технологии в свою пользу.</strong> ИИ и автоматизация — способ освободить время для того, что по-настоящему важно.</div>
+            <div class="step"><strong>Строить окружение, которое поддерживает.</strong> Люди, которые ценят твою природу, делают путь к себе реальнее.</div>
+            <div class="step"><strong>Не ждать идеальных условий.</strong> Возвращение к зелёному солнцу начинается с первого честного шага — сегодня.</div>
+        </div>
+
+        <p>
+            Общество не изменится за ночь. Но каждый, кто выбирает себя,
+            ослабляет цикл конформности и даёт пример другим.
+            Твоя ебонца — не обуза, а <span class="highlight">ресурс</span> для себя и для мира.
+        </p>
+    </div>
+
+    <div class="quote">
+        «Неудовлетворённость — это не слабость.
+        Это компас: ты ещё не предал себя окончательно — значит, путь обратно открыт.»
+    </div>
+
+    <!-- ФИНАЛ -->
+    <div class="final">
+        <h2>Вывод манифеста</h2>
+        <p>
+            Каждый рождается со своей ебонцой — уникальной, живой, настоящей.<br><br>
+            Общество часто её приглушает через конформность,
+            финансовую зависимость и страх. Но это не конец истории.<br><br>
+            Прогресс — включая ИИ — может стать не ловушкой, а <span class="highlight">инструментом возвращения</span>
+            к тому, что делает человека человеком.<br><br>
+            <span class="highlight">
+                Гармония — это не цель где-то в будущем. Это возвращение.<br>
+                К тому зелёному солнцу, которое ты нарисовал в детстве — и которое всё ещё ждёт тебя.
+            </span>
+        </p>
+        <div class="viral-label-footer">
+            <div class="sun-wrap" title="Зелёное солнце">
+                <svg width="64" height="64" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <g fill="#7a9b76" stroke="#5a7c4e" stroke-width="1.5">
+                        <path d="M40 8 L43 28 L40 26 L37 28 Z"/>
+                        <path d="M40 72 L43 52 L40 54 L37 52 Z"/>
+                        <path d="M8 40 L28 43 L26 40 L28 37 Z"/>
+                        <path d="M72 40 L52 43 L54 40 L52 37 Z"/>
+                        <path d="M18 18 L30 32 L28 30 L26 28 Z"/>
+                        <path d="M62 18 L50 32 L52 30 L54 28 Z"/>
+                        <path d="M18 62 L30 48 L28 50 L26 52 Z"/>
+                        <path d="M62 62 L50 48 L52 50 L54 52 Z"/>
+                    </g>
+                    <circle cx="40" cy="40" r="22" fill="#8fbc8f" stroke="#5a7c4e" stroke-width="2"/>
+                    <circle cx="40" cy="40" r="18" fill="url(#sunGrad2)" opacity="0.9"/>
+                    <defs>
+                        <radialGradient id="sunGrad2" cx="35%" cy="35%" r="70%">
+                            <stop offset="0%" stop-color="#a8d4a0"/>
+                            <stop offset="100%" stop-color="#6b9b5c"/>
+                        </radialGradient>
+                    </defs>
+                    <circle cx="34" cy="36" r="3" fill="#2d2a26"/>
+                    <circle cx="46" cy="36" r="3" fill="#2d2a26"/>
+                    <path d="M32 46 Q40 52 48 46" stroke="#2d2a26" stroke-width="2" fill="none" stroke-linecap="round"/>
+                    <circle cx="35" cy="35" r="0.8" fill="#fff"/>
+                    <circle cx="47" cy="35" r="0.8" fill="#fff"/>
+                </svg>
+            </div>
+            <span class="viral-tag">#ЗелёноеСолнце — твой символ</span>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>
